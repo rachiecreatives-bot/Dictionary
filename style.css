@@ -114,6 +114,54 @@ body {
     color: red;
 }
 
+.toggle{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+.toggle button{
+    background-color: #ae9cff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+body.dark-mode .container {
+    background-color: #333333;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .search-box input {
+    border-bottom: 3px solid #ffffff;
+}
+
+body.dark-mode .search-box button {
+    background-color: #575a7b;
+}
+
+body.dark-mode .result h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .word-meaning,
+body.dark-mode .word-example {
+    color: #b3b3b3;
+}
+
+body.dark-mode .error {
+    color: #ff4c4c;
+}
+
+
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .container {

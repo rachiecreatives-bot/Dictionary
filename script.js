@@ -23,7 +23,8 @@ btn.addEventListener("click", () => {
         .then((data) => {
             const wordData = data[0];
             const phonetics = wordData.phonetics.find(p => p.audio) || {};
-            const audioSrc = phonetics.audio ? `https:${phonetics.audio}` : null;
+            const audioSrc = phonetics.audio ? phonetics.audio : null;
+
 
             result.innerHTML = `
                 <div class="word">
@@ -59,3 +60,22 @@ function playSound() {
         sound.play();
     }
 }
+
+
+        // JavaScript for Dark Mode / Light Mode Toggle
+        const toggleButton = document.getElementById('toggle-theme');
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+
+            let theme = 'light';
+            if (document.body.classList.contains('dark-mode')) {
+                theme = 'dark';
+            }
+            localStorage.setItem('theme', theme);
+        });
