@@ -1,11 +1,9 @@
 const url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 const result = document.getElementById("result");
 const sound = document.getElementById("sound");
-
-const btn  = document.getElementById("search-btn");
+const btn = document.getElementById("search-btn");
 
 btn.addEventListener("click", () => {
-
     let inpWord = document.getElementById("inp-word").value.trim();
 
     if (!inpWord) {
@@ -25,6 +23,18 @@ btn.addEventListener("click", () => {
             const phonetics = wordData.phonetics.find(p => p.audio) || {};
             const audioSrc = phonetics.audio ? phonetics.audio : null;
 
+            // Creating a list of all meanings and definitions
+            let meaningsHTML = "";
+            wordData.meanings.forEach(meaning => {
+                meaningsHTML += `
+                    <div class="meaning-block">
+                        <p><strong>${meaning.partOfSpeech}</strong></p>
+                        ${meaning.definitions.map(def => `
+                            <p><em>Definition:</em> ${def.definition}</p>
+                            ${def.example ? `<p><em>Example:</em> ${def.example}</p>` : ''}
+                        `).join('')}
+                    </div>`;
+            });
 
             result.innerHTML = `
                 <div class="word">
@@ -34,15 +44,9 @@ btn.addEventListener("click", () => {
                     </button>
                 </div>
                 <div class="details">
-                    <p>${wordData.meanings[0].partOfSpeech}</p>
                     <p>${wordData.phonetic || ''}</p>
                 </div>
-                <p class="word-meaning">
-                    ${wordData.meanings[0].definitions[0].definition}
-                </p>            
-                <p class="word-example">
-                    ${wordData.meanings[0].definitions[0].example || ""}
-                </p>`;
+                ${meaningsHTML}`;
 
             if (audioSrc) {
                 sound.setAttribute("src", audioSrc);
@@ -61,21 +65,20 @@ function playSound() {
     }
 }
 
+// JavaScript for Dark Mode / Light Mode Toggle
+const toggleButton = document.getElementById('toggle-theme');
 
-        // JavaScript for Dark Mode / Light Mode Toggle
-        const toggleButton = document.getElementById('toggle-theme');
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+}
 
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
+toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
 
-        toggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-
-            let theme = 'light';
-            if (document.body.classList.contains('dark-mode')) {
-                theme = 'dark';
-            }
-            localStorage.setItem('theme', theme);
-        });
+    let theme = 'light';
+    if (document.body.classList.contains('dark-mode')) {
+        theme = 'dark';
+    }
+    localStorage.setItem('theme', theme);
+});
