@@ -8,22 +8,25 @@ body {
     font-family: "Poppins", sans-serif;
     background-color: #ae9cff;
     display: flex;
-    align-items: center;
     justify-content: center;
     min-height: 100vh;
-    overflow: hidden;
+    height: auto; 
+    overflow-x: hidden; 
+    padding: 20px; 
 }
 
 .container {
     background-color: #ffffff;
     width: 90%;
-    max-width: 600px;
+    max-width: 700px;
     padding: 40px 30px;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 20px 40px rgba(38, 33, 61, 0.2);
+    margin-bottom: 20px; 
 }
 
 
+/* Search Box */
 .search-box {
     width: 100%;
     display: flex;
@@ -36,7 +39,7 @@ body {
     border: none;
     outline: none;
     border-bottom: 3px solid #ae9cff;
-    font-size: 16px;
+    font-size: 18px;
     flex-grow: 1;
     border-radius: 5px;
 }
@@ -50,20 +53,23 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 18px;
 }
 
 .search-box button:hover {
     background-color: #9a8acf;
 }
 
+/* Results Section */
 .result {
     margin-top: 40px;
     position: relative;
 }
 
 .result h3 {
-    font-size: 30px;
+    font-size: 32px;
     color: #1f194c;
+    margin-bottom: 10px;
 }
 
 .result .word {
@@ -87,25 +93,39 @@ body {
     cursor: not-allowed;
 }
 
-.result .details {
-    display: flex;
-    gap: 20px;
-    color: #575a7b;
-    margin: 10px 0;
-    font-size: 16px;
-    flex-wrap: wrap;
+/* Meaning Block */
+.meaning-block {
+    background-color: #f5f5ff;
+    border-left: 4px solid #ae9cff;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
 }
 
-.word-meaning,
-.word-example {
+.meaning-block strong {
+    font-size: 20px;
+    color: #333;
+    text-transform: capitalize;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.meaning-block p {
+    font-size: 16px;
     color: #575a7b;
-    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.meaning-block em {
+    font-style: italic;
+    color: #9a8acf;
 }
 
 .word-example {
     font-style: italic;
     border-left: 5px solid #ae9cff;
     padding-left: 20px;
+    margin-top: 10px;
 }
 
 .error {
@@ -114,26 +134,74 @@ body {
     color: red;
 }
 
-.toggle{
+/* Toggle Button */
+.toggle {
     display: flex;
     justify-content: flex-end;
     margin: 20px 0;
 }
 
-.toggle button{
+.toggle button {
     background-color: #ae9cff;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
-    font-size: px;
+    font-size: 16px;
     border-radius: 25px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.toggle button:hover {
+    background-color: #9a8acf;
+}
 
 
+.meaning-block {
+    background-color: #f9f9ff; 
+    border-left: 4px solid #ae9cff; 
+    padding: 15px 20px;
+    margin-bottom: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.meaning-block strong {
+    font-size: 20px;
+    color: #333;
+    text-transform: capitalize;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.meaning-block p {
+    font-size: 16px;
+    color: #555; 
+    line-height: 1.6; 
+    margin-bottom: 10px;
+}
+
+.meaning-block em {
+    font-style: normal;
+    color: #6f6bc8; 
+    font-weight: bold; 
+}
+
+.word-example {
+    font-style: italic;
+    background-color: #eaf0ff;
+    border-left: 5px solid #ae9cff; 
+    padding-left: 15px;
+    padding: 10px 15px; 
+    margin-top: 10px;
+    border-radius: 8px; 
+    color: #555; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+}
+
+
+/* Dark Mode Styles */
 body.dark-mode .container {
     background-color: #333333;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
@@ -160,7 +228,10 @@ body.dark-mode .error {
     color: #ff4c4c;
 }
 
-
+body.dark-mode .meaning-block {
+    background-color: #444;
+    border-left: 4px solid #575a7b;
+}
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -175,7 +246,7 @@ body.dark-mode .error {
 
     .search-box input {
         width: 100%;
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .search-box button {
@@ -185,7 +256,7 @@ body.dark-mode .error {
     }
 
     .result .word h3 {
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .result button {
@@ -215,6 +286,18 @@ body.dark-mode .error {
         font-size: 16px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* *{
     padding: 0;
